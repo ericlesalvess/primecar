@@ -1,5 +1,7 @@
 @extends('adminlte::auth.auth-page', ['authType' => 'login'])
 
+
+
 @php
     $passResetUrl = View::getSection('password_reset_url') ?? config('adminlte.password_reset_url', 'password/reset');
 
