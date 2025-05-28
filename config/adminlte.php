@@ -310,10 +310,7 @@ return [
         ],
 
       //  [
-        //    'type' => 'darkmode-widget',
-          //  'topnav_right' => true,
-          //  'disable_darkmode_routes' => false,
-           // 'layout_dark_mode' => true,
+       
        // ],
       
         

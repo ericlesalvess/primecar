@@ -99,6 +99,7 @@
                             <option value="Gasolina" {{ (isset($edit->tipo_combustivel) && $edit->tipo_combustivel == 'Gasolina') ? 'selected' : '' }}>Gasolina</option>
                             <option value="Álcool" {{ (isset($edit->tipo_combustivel) && $edit->tipo_combustivel == 'Álcool') ? 'selected' : '' }}>Álcool</option>
                             <option value="Diesel" {{ (isset($edit->tipo_combustivel) && $edit->tipo_combustivel == 'Diesel') ? 'selected' : '' }}>Diesel</option>
+                            <option value="Gás" {{ (isset($edit->tipo_combustivel) && $edit->tipo_combustivel == 'Gás') ? 'selected' : '' }}>Gás</option>
                             <option value="Flex" {{ (isset($edit->tipo_combustivel) && $edit->tipo_combustivel == 'Flex') ? 'selected' : '' }}>Flex</option>
                         </select>
                         @if ($errors->has('tipo_combustivel'))

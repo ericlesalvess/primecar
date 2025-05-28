@@ -1,8 +1,7 @@
 @inject('layoutHelper', 'JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper')
 
-<nav class="main-header navbar
-    {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}
-    {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}">
+<nav class="main-header navbar navbar-expand">
+  
 
     {{-- Navbar left links --}}
     <ul class="navbar-nav">
@@ -24,6 +23,12 @@
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
+        <!-- Botão para alternar o modo escuro -->
+    <li class="nav-item">
+     <a class="nav-link" href="#" id="toggle-dark-mode" title="Alternar tema">
+    <i class="fas fa-moon" id="dark-mode-icon"></i>
+    </a>
+</li>
         {{-- User menu link --}}
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
@@ -38,5 +43,51 @@
             @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
         @endif
     </ul>
+    @push('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const html = document.documentElement;
+            const toggle = document.getElementById('toggle-dark-mode');
+            const icon = document.getElementById('dark-mode-icon');
+            const navbar = document.querySelector('.main-header.navbar');
+    
+            // Classes para dark e light mode
+            const lightClasses = ['navbar-white', 'navbar-light'];
+            const darkClasses = ['navbar-dark', 'bg-dark'];
+    
+            // Função para aplicar classes conforme o tema
+            function updateNavbarTheme(isDark) {
+                if (isDark) {
+                    navbar.classList.remove(...lightClasses);
+                    navbar.classList.add(...darkClasses);
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    navbar.classList.remove(...darkClasses);
+                    navbar.classList.add(...lightClasses);
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+    
+            // Verifica a preferência salva
+            const savedDark = localStorage.getItem('adminlte_dark_mode') === 'true';
+            html.classList.toggle('dark-mode', savedDark);
+            updateNavbarTheme(savedDark);
+    
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                html.classList.toggle('dark-mode');
+    
+                const isDark = html.classList.contains('dark-mode');
+                localStorage.setItem('adminlte_dark_mode', isDark);
+                updateNavbarTheme(isDark);
+            });
+        });
+    </script>
+    @endpush
+    
+    
+
 
 </nav>

@@ -24,10 +24,11 @@
                     <tr>
                         <th style="width: 15%">Modelo</th>
                         <th style="width: 10%">Marca</th>
+                        <th style="width: 10%">Origem</th>
                         <th style="width: 10%">Ano</th>
                         <th style="width: 10%">Cor</th>
                         <th style="width: 10%">Combustível</th>
-                        <th style="width: 50%">Obs.</th>
+                        <th style="width: 20%">Observação</th>
                     </tr>
                 </thead>
             </table>
@@ -65,6 +66,18 @@
                         data: 'marca',
                         name: 'marca'
                     },
+                    {
+                         data: 'origem',
+                         name: 'origem',
+                        render: function (data) {
+                            if (data == 0) {
+                                 return '<span class="badge badge-success">Nacional</span>';
+                            } else if (data == 1) {
+                                return '<span class="badge 	badge bg-danger ">Importado</span>';
+                             }
+                                return data;
+                        }
+                 },
             
                     {
                         data: 'ano_fabricacao',
