@@ -339,11 +339,13 @@ return [
             'text' => 'Catálogo',
             'url' => '/catalogo',
             'icon' => 'fas fa-book-open',
+            'can' => 'acessar catalogo',
         ],
         [
             'text' => 'Locação',
             'url' => '/locacao',
             'icon' => 'fas fa-car-side',
+            'can' => 'acessar locacao',
         ],
         [
             'text' => 'Cadastro',
@@ -354,11 +356,13 @@ return [
                     'text' => 'Clientes',
                     'url' => '/cliente',
                     'icon' => 'fas fa-fw fa-users',
+                    'can' => 'acessar cliente',
                 ],
                 [
                     'text' => 'Veículos',
                     'url' => '/veiculo',
                     'icon' => 'fas fa-fw fa-car',
+                    'can' => 'acessar veiculo',
                 ],
                 
             ],

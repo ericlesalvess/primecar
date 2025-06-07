@@ -1,0 +1,71 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6322
+    [34mall[39m: [
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6371
+        [34mid[39m: [35m1[39m,
+        [34mname[39m: "[32macessar dashboard[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6368
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m1[39m,
+        },
+      },
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6366
+        [34mid[39m: [35m2[39m,
+        [34mname[39m: "[32macessar catalogo[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6370
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m2[39m,
+        },
+      },
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6365
+        [34mid[39m: [35m3[39m,
+        [34mname[39m: "[32macessar locacao[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6374
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m3[39m,
+        },
+      },
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6364
+        [34mid[39m: [35m4[39m,
+        [34mname[39m: "[32macessar cliente[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6372
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m4[39m,
+        },
+      },
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6363
+        [34mid[39m: [35m5[39m,
+        [34mname[39m: "[32macessar veiculo[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:03:20[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6373
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m5[39m,
+        },
+      },
+      [34;4mSpatie\Permission\Models\Permission[39;24m {#6362
+        [34mid[39m: [35m6[39m,
+        [34mname[39m: "[32macessar cadastro[39m",
+        [34mguard_name[39m: "[32mweb[39m",
+        [34mcreated_at[39m: "[32m2025-06-05 11:47:34[39m",
+        [34mupdated_at[39m: "[32m2025-06-05 11:47:34[39m",
+        [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6378
+          [34mrole_id[39m: [35m1[39m,
+          [34mpermission_id[39m: [35m6[39m,
+        },
+      },
+    ],
+  }
+

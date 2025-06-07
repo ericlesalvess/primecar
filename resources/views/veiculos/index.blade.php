@@ -57,6 +57,12 @@
         $(document).ready(function() {
 
             $('#veiculo-table').DataTable({
+                 // Desabilita a pesquisa, paginação e informações
+                searching: false,
+                lengthChange: false,
+                paging: false,
+                info: false,
+
                 language: {
                     "url": "{{ asset('js/pt-br.json') }}"
                 },
