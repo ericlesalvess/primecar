@@ -3,7 +3,7 @@
 @section('title', 'Controle de locação')
 
 @section('content_header')
-    <h1>Locação</h1>
+    
 @stop
 
 @section('plugins.Datatables', true)

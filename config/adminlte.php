@@ -152,6 +152,7 @@ return [
     |
     */
 
+    
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
@@ -301,13 +302,15 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Pesquisar',
             'topnav_right' => true,
         ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+     
+        
 
       //  [
        

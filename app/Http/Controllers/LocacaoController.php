@@ -26,6 +26,13 @@ class LocacaoController extends Controller
                 ->get(); // Certifique-se de carregar as relações
 
             return DataTables::of($data)
+
+                ->addColumn('data_locacao', function ($row) {
+                 return \Carbon\Carbon::parse($row->data_locacao)->format('d/m/Y'); // Ajusta o campo no formato D/M/Y
+                    })
+                ->addColumn('data_prevista_devolucao', function ($row) {
+                 return \Carbon\Carbon::parse($row->data_prevista_devolucao)->format('d/m/Y'); // Ajusta o campo no formato D/M/Y
+                })
                 ->addColumn('modelo', function ($row) {
                     return $row->veiculo->modelo ?? 'N/A'; // Ajuste o campo conforme o nome no modelo
                 })

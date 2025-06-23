@@ -3,7 +3,6 @@
 @section('title', 'Cadastro de Veículos')
 
 @section('content_header')
-    <h1>Veículos</h1>
 @stop
 
 @section('plugins.Datatables', true)

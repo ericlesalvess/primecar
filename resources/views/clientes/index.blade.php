@@ -3,7 +3,6 @@
 @section('title', 'Cadastro de Clientes')
 
 @section('content_header')
-    <h1>Clientes</h1>
 @stop
 
 @section('plugins.Datatables', true)
@@ -23,18 +22,18 @@
                 <thead>
                     <tr>
                         <th style="width: 5%">Id</th>
-                        <th style="width: 15%">Cliente</th>
-                        <th style="width: 5%">CPF</th>
+                        <th style="width: 12%">Cliente</th>
+                        <th style="width: 7%">CPF</th>
                         <th style="width: 5%">CEP</th>
-                        <th style="width: 5%">Endereço</th>
+                        <th style="width: 10%">Endereço</th>
                         <th style="width: 5%">Número</th>
                         <th style="width: 5%">Bairro</th>      
-                        <th style="width: 5%">Complemento</th>
+                        <th style="width: 1%">Complemento</th>
                         <th style="width: 5%">Estado</th>
                         <th style="width: 5%">Cidade</th>
-                        <th style="width: 5%">Celular</th>
+                        <th style="width: 8%">Celular</th>
                         <th style="width: 5%">Email</th>
-                        <th style="width: 5%">Ações</th>
+                        <th style="width: 7%">Ações</th>
                     
                     </tr>
                 </thead>
