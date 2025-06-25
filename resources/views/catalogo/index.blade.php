@@ -25,6 +25,7 @@
                         <th style="width: 10%">Ano</th>
                         <th style="width: 10%">Cor</th>
                         <th style="width: 10%">Combustível</th>
+                        <th style="width: 10%">Status</th>
                         <th style="width: 20%">Observação</th>
                     </tr>
                 </thead>
@@ -94,6 +95,19 @@
                     {
                         data: 'tipo_combustivel',
                         name: 'tipo_combustivel'
+                    },
+                    {
+                        data: 'saldo',
+                        name: 'saldo',
+                        render: function(data, type, row) {
+                            if (data == 1) {
+                                return '<span class="badge badge-success">Disponível</span>';
+                            } else if (data == 0) {
+                                return '<span class="badge badge-danger">Alugado</span>';
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: 'observacoes',

@@ -89,7 +89,7 @@ class LocacaoController extends Controller
                     $saldo -= $alugado->total;
                 }
             }
-
+            // Apenas adiciona veículos com saldo maior que zero
             if ($saldo > 0) {
                 $saldo_veiculos[] = [
                     'id' => $veiculo->id,
@@ -101,7 +101,7 @@ class LocacaoController extends Controller
             }
         }
 
-        // dd($saldo_veiculos);
+       
 
         $output = array(
             'clientes' => $clientes,
@@ -127,6 +127,16 @@ class LocacaoController extends Controller
         $data_prevista_devolucao = Carbon::createFromFormat('d/m/Y', $request->data_prevista_devolucao)->format('Y-m-d');
         $origin_user = $user->name;
         $last_user = $user->name;
+
+
+         // Diminui o saldo do veículo
+        $veiculo = Veiculo::find($veiculo_id);
+        if ($veiculo && $veiculo->saldo > 0) {
+            $veiculo->saldo -= 1;
+            $veiculo->save();
+        }
+
+
 
         $loc = new Locacao();
         $loc->veiculo_id = $veiculo_id;
@@ -170,7 +180,7 @@ class LocacaoController extends Controller
 
         $saldo_veiculos = array();
 
-        foreach ($veiculos as $veiculo) {
+          foreach ($veiculos as $veiculo) {
             $saldo = $veiculo->saldo;
 
             foreach ($alugados as $alugado) {
@@ -179,15 +189,13 @@ class LocacaoController extends Controller
                 }
             }
 
-            if ($saldo > 0) {
-                $saldo_veiculos[] = [
-                    'id' => $veiculo->id,
-                    'modelo' => $veiculo->modelo,
-                    'saldo' => $saldo,
-                    'cor' => $veiculo->cor,
-                    'placa' => $veiculo->placa,
-                ];
-            }
+            $saldo_veiculos[] = [
+                'id' => $veiculo->id,
+                'modelo' => $veiculo->modelo,
+                'saldo' => $saldo,
+                'cor' => $veiculo->cor,
+                'placa' => $veiculo->placa,
+            ];
         }
 
 
@@ -213,6 +221,12 @@ class LocacaoController extends Controller
         $loc->last_user = $user->name;
         $loc->update();
 
+        // Aumenta o saldo do veículo ao devolver
+        $veiculo = Veiculo::find($loc->veiculo_id);
+        if ($veiculo) {
+            $veiculo->saldo += 1;
+            $veiculo->save();
+        }
 
         return view('locacoes.index');
     }
