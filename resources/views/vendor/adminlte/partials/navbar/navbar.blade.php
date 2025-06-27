@@ -50,6 +50,9 @@
             const toggle = document.getElementById('toggle-dark-mode');
             const icon = document.getElementById('dark-mode-icon');
             const navbar = document.querySelector('.main-header.navbar');
+            const sidebar = document.querySelector('.main-sidebar');
+            const sidebarLight = 'sidebar-light-primary';
+            const sidebarDark = 'sidebar-dark-primary';
     
             // Classes para dark e light mode
             const lightClasses = ['navbar-white', 'navbar-light'];
@@ -70,10 +73,22 @@
                 }
             }
     
+            function updateSidebarTheme(isDark) {
+                if (!sidebar) return;
+                if (isDark) {
+                    sidebar.classList.remove(sidebarLight);
+                    sidebar.classList.add(sidebarDark);
+                } else {
+                    sidebar.classList.remove(sidebarDark);
+                    sidebar.classList.add(sidebarLight);
+                }
+            }
+    
             // Verifica a preferência salva
             const savedDark = localStorage.getItem('adminlte_dark_mode') === 'true';
             html.classList.toggle('dark-mode', savedDark);
             updateNavbarTheme(savedDark);
+            updateSidebarTheme(savedDark);
     
             toggle.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -82,12 +97,20 @@
                 const isDark = html.classList.contains('dark-mode');
                 localStorage.setItem('adminlte_dark_mode', isDark);
                 updateNavbarTheme(isDark);
+                updateSidebarTheme(isDark);
             });
         });
+
+        
+        
     </script>
     @endpush
-    
-    
-
 
 </nav>
+
+<style>
+.main-sidebar,.main-header.navbar, body,
+html {
+    transition: background-color 0.3s, color 0.4s;
+}
+</style>
