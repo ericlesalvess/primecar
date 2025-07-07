@@ -14,11 +14,11 @@
             <div class="form-group">
 
                 @if (isset($edit->id))
-                    <form method="post" action="{{ route('veiculo.update', ['veiculo' => $edit->id]) }}">
+                    <form method="post" action="{{ route('veiculo.update', ['veiculo' => $edit->id]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                 @else
-                    <form method="post" action="{{ route('veiculo.store') }}">
+                    <form method="post" action="{{ route('veiculo.store') }}" enctype="multipart/form-data">
                         @csrf
                 @endif
 
@@ -136,6 +136,35 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="fotos">Fotos do veículo</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fotos" name="fotos[]" multiple accept="image/*">
+                        <label class="custom-file-label" for="fotos">Escolha as fotos</label>
+                    </div>
+                    <small class="form-text text-muted">Você pode selecionar várias imagens.</small>
+                </div>
+
+                @if(isset($edit->id) && $edit->fotos->count())
+                    <div class="mb-3">
+                        <label>Fotos já cadastradas:</label>
+                        <div class="d-flex flex-wrap">
+                            @foreach($edit->fotos as $foto)
+                                <div class="position-relative mr-2 mb-2 foto-item {{ $foto->capa ? 'foto-capa' : '' }}" 
+                                     data-id="{{ $foto->id }}" 
+                                     style="border: 3px solid {{ $foto->capa ? '#007bff' : 'transparent' }}; border-radius: 6px; cursor:pointer;">
+                                    <img src="{{ asset('storage/' . $foto->caminho) }}" alt="Foto" width="100" style="object-fit:cover;">
+                                    <button type="button" class="btn btn-danger btn-sm btn-foto-delete" style="position:absolute;top:2px;right:2px;padding:0 6px;line-height:1;">&times;</button>
+                                    @if($foto->capa)
+                                        <span class="badge badge-primary" style="position:absolute;bottom:2px;left:2px;">Capa</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                        <small class="form-text text-muted">Clique em uma foto para definir como capa do catálogo.</small>
+                    </div>
+                @endif
+
         </div> <!-- fecha form-group -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Registrar</button>
@@ -195,4 +224,52 @@
            
             });
     </script>
+    @push('js')
+<script>
+document.querySelector('.custom-file-input').addEventListener('change', function(e){
+    var fileName = Array.from(this.files).map(f => f.name).join(', ');
+    this.nextElementSibling.innerText = fileName;
+});
+</script>
+@endpush
+<script>
+$(document).on('click', '.btn-foto-delete', function() {
+    if(!confirm('Deseja realmente apagar esta foto?')) return;
+    var $item = $(this).closest('.foto-item');
+    var fotoId = $item.data('id');
+    $.ajax({
+        url: '/fotos/' + fotoId,
+        type: 'DELETE',
+        data: {
+            _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+            if(response.success) {
+                $item.remove();
+            }
+        }
+    });
+});
+</script>
+<script>
+$(document).on('click', '.foto-item img', function() {
+    var $item = $(this).closest('.foto-item');
+    var fotoId = $item.data('id');
+    $.ajax({
+        url: '/fotos/' + fotoId + '/capa',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+            if(response.success) {
+                $('.foto-item').css('border', '3px solid transparent').removeClass('foto-capa');
+                $item.css('border', '3px solid #007bff').addClass('foto-capa');
+                $('.foto-item .badge-primary').remove();
+                $item.append('<span class="badge badge-primary" style="position:absolute;bottom:2px;left:2px;">Capa</span>');
+            }
+        }
+    });
+});
+</script>
 @stop

@@ -16,6 +16,7 @@
                 <a href="{{ route('veiculo.create') }}" type="button" class="btn btn-primary" style="width:80px;">Novo</a>
             </div>
             <br> --}}
+            {{-- 
             <table class="table table-bordered table-striped dataTable dtr-inline" id="veiculo-table" style="font-size: 15px;">
                 <thead>
                     <tr>
@@ -30,6 +31,44 @@
                     </tr>
                 </thead>
             </table>
+            --}}
+
+            <div class="container">
+                <div class="row">
+                    @foreach($veiculos as $veiculo)
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow">
+                            @php
+                                // Busca a foto marcada como capa, se não houver pega a primeira
+                                $fotoCapa = $veiculo->fotos->where('capa', true)->first() ?? $veiculo->fotos->first();
+                            @endphp
+                            @if($fotoCapa)
+                                <img src="{{ asset('storage/' . $fotoCapa->caminho) }}" class="card-img-top" alt="Foto do veículo">
+                            @else
+                                <img src="{{ asset('img/sem-foto.png') }}" class="card-img-top" alt="Sem foto">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $veiculo->modelo }}</h5>
+                                <p class="card-text">
+                                    Marca: {{ $veiculo->marca }}<br>
+                                    Ano: {{ $veiculo->ano_fabricacao ?? '' }}<br>
+                                    Cor: {{ $veiculo->cor }}<br>
+                                    Status:
+                                    @if($veiculo->saldo == 1)
+                                        <span class="badge badge-success">Disponível</span>
+                                    @elseif($veiculo->saldo == 0)
+                                        <span class="badge badge-danger">Alugado</span>
+                                    @else
+                                        <span class="badge badge-secondary">Indefinido</span>
+                                    @endif
+                                </p>
+                                <a href="#" class="btn btn-primary btn-block">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
     </div>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Veiculo;
+use App\Models\Foto;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -51,9 +52,8 @@ class VeiculoController extends Controller
         $cor = $request->post('cor');
         $tipo_combustivel = $request->post('tipo_combustivel');
         $observacoes = $request->post('observacoes');
-              
 
-        $veiculo = new veiculo();
+        $veiculo = new Veiculo();
 
         $veiculo->modelo = $modelo;
         $veiculo->marca = $marca;
@@ -69,10 +69,18 @@ class VeiculoController extends Controller
         $veiculo->last_user = $user->name;
         $veiculo->save();
 
+        // Salvar as fotos
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $foto) {
+                $path = $foto->store('fotos', 'public');
+                $novaFoto = new Foto();
+                $novaFoto->veiculo_id = $veiculo->id;
+                $novaFoto->caminho = $path;
+                $novaFoto->save();
+            }
+        }
 
         return view('veiculos.index');
-
-      
     }
 
     public function edit(string $id)
@@ -99,9 +107,9 @@ class VeiculoController extends Controller
         $cor = $request->post('cor');
         $tipo_combustivel = $request->post('tipo_combustivel');
         $observacoes = $request->post('observacoes');
-        $saldo = $request->post('saldo');
+    
 
-        $veiculo = veiculo::find($id);
+        $veiculo = Veiculo::find($id);
 
         $veiculo->modelo = $modelo;
         $veiculo->marca = $marca;
@@ -117,8 +125,18 @@ class VeiculoController extends Controller
         $veiculo->last_user = $user->name;
         $veiculo->save();
 
+        // Salvar novas fotos (adiciona sem apagar as antigas)
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $foto) {
+                $path = $foto->store('fotos', 'public');
+                $novaFoto = new Foto();
+                $novaFoto->veiculo_id = $veiculo->id;
+                $novaFoto->caminho = $path;
+                $novaFoto->save();
+            }
+        }
+
         return view('veiculos.index');
-        
     }
 
     public function destroy(string $id)
@@ -127,5 +145,11 @@ class VeiculoController extends Controller
         $veiculo->delete();
 
         return view('veiculos.index');
+    }
+
+    public function show($id)
+    {
+        $veiculo = Veiculo::with('fotos')->findOrFail($id);
+        return view('veiculos.show', compact('veiculo'));
     }
 }

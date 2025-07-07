@@ -45,6 +45,7 @@
     </ul>
     @push('js')
     <script>
+        
         document.addEventListener('DOMContentLoaded', function () {
             const html = document.documentElement;
             const toggle = document.getElementById('toggle-dark-mode');

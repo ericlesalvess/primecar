@@ -29,3 +29,42 @@
     background: transparent; /* Ou use a mesma cor do .card se quiser 
     padding: 20px;
 }
+
+/* Chrome, Safari, Edge */
+.login-box input:-webkit-autofill,
+.login-box input:-webkit-autofill:focus,
+.login-box input:-webkit-autofill:hover,
+.login-box input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #23272b inset !important; /* cor de fundo desejada */
+    -webkit-text-fill-color: #e0e0e0 !important; /* cor do texto */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox */
+.login-box input:-moz-autofill {
+    box-shadow: 0 0 0 1000px #23272b inset !important;
+    -moz-text-fill-color: #e0e0e0 !important;
+}
+/* explicação: O código acima aplica um estilo específico aos campos
+ de entrada quando o preenchimento automático é ativado, garantindo que a cor de fundo
+  e a cor do texto permaneçam consistentes com o tema do site. */
+
+/* Modo dark: fundo escuro, texto claro */
+.dark-mode .login-page input[type="email"]:-webkit-autofill,
+.dark-mode .login-page input[type="email"]:-webkit-autofill:focus,
+.dark-mode .login-page input[type="email"]:-webkit-autofill:hover {
+    -webkit-text-fill-color: #e0e0e0 !important;   /* texto claro */
+    color: #e0e0e0 !important;
+    background-color: #23272b !important;          /* fundo escuro */
+    box-shadow: 0 0 0 1000px #23272b inset !important; /* fundo escuro */
+}
+
+/* Modo claro: fundo branco, texto preto */
+.login-page input[type="email"]:-webkit-autofill,
+.login-page input[type="email"]:-webkit-autofill:focus,
+.login-page input[type="email"]:-webkit-autofill:hover {
+    -webkit-text-fill-color: #111 !important;      /* texto preto */
+    color: #111 !important;
+    background-color: #fff !important;             /* fundo branco */
+    box-shadow: 0 0 0 1000px #fff inset !important;
+}

@@ -13,13 +13,20 @@
             <div class="card-body d-flex flex-column">
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
-                        <div style="width: 100%; max-width: 500px; height:300px;">
+                        <!-- Botão para mostrar gráfico de locações -->
+                        <button id="showLocacoesChart" class="btn btn-outline-primary mb-3">
+                            <i class="fas fa-chart-line"></i> Ver Gráfico de Locações
+                        </button>
+                        <div id="locacoesChartContainer" style="width: 100%; max-width: 500px; height:300px; display: none;">
                             <canvas id="locacoesChart" height="180"></canvas>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
-                        <div style="width: 100%; max-width: 350px;">
-                           
+                        <!-- Botão para mostrar gráfico de veículos -->
+                        <button id="showVeiculosChart" class="btn btn-outline-success mb-3">
+                            <i class="fas fa-chart-pie"></i> Ver Gráfico de Veículos
+                        </button>
+                        <div id="veiculosChartContainer" style="width: 100%; max-width: 350px; display: none;">
                             <canvas id="veiculosPieChart"></canvas>
                         </div>
                     </div>
@@ -35,6 +42,16 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Botões para mostrar os gráficos
+    document.getElementById('showLocacoesChart').onclick = function() {
+        document.getElementById('locacoesChartContainer').style.display = 'block';
+        this.style.display = 'none';
+    };
+    document.getElementById('showVeiculosChart').onclick = function() {
+        document.getElementById('veiculosChartContainer').style.display = 'block';
+        this.style.display = 'none';
+    };
+
     const labels = {!! json_encode($labels) !!};
     const data = {
         labels: labels,

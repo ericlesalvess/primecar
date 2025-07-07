@@ -11,6 +11,19 @@ class Veiculo extends Model
 
     public function locacoes()
     {
-        return $this->hasMany(Locacao::class, 'veiculo_id');
+        return $this->hasMany(\App\Models\Locacao::class);
+    }
+    
+    public function fotos()
+    {
+        return $this->hasMany(Foto::class);
+    }
+
+
+    public function getSaldoAttribute()
+    {
+        // Retorna 1 se disponível, 0 se alugado
+        $locacaoAtiva = $this->locacoes()->whereNull('data_devolucao')->where('deletado', 0)->exists();
+        return $locacaoAtiva ? 0 : 1;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Veiculo; // Certifique-se de que o namespace está correto
 
 class CatalogoController extends Controller
 {
@@ -11,7 +12,8 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        return view('catalogo.index');
+        $veiculos = Veiculo::with('fotos')->get(); // ou o que for necessário
+        return view('catalogo.index', compact('veiculos'));
     }
 
     /**

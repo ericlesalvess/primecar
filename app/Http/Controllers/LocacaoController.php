@@ -244,4 +244,10 @@ class LocacaoController extends Controller
 
         return view('locacoes.index');
     }
+
+    public function apagarTodas()
+    {
+        \App\Models\Locacao::query()->update(['deletado' => 1]);
+        return response()->json(['success' => true]);
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-
+            use Illuminate\Support\Facades\Auth;
             use Illuminate\Support\Facades\Route;
             use App\Http\Controllers\HomeController;
             use App\Http\Controllers\ClienteController;
@@ -32,8 +32,14 @@
     Route::resource('locacao', LocacaoController::class);
         //->middleware('permission:acessar locacao');
 
+    Route::get('/veiculos/{id}', [\App\Http\Controllers\VeiculoController::class, 'show'])->name('veiculos.show');
+
+    Route::delete('/fotos/{id}', [\App\Http\Controllers\FotoController::class, 'destroy'])->name('fotos.destroy');
+    Route::post('/fotos/{id}/capa', [\App\Http\Controllers\FotoController::class, 'definirCapa']);
+    Route::delete('/locacoes/apagar-todas', [\App\Http\Controllers\LocacaoController::class, 'apagarTodas'])->name('locacao.apagarTodas');
+
 });
 
 
-            
-           
+
+
