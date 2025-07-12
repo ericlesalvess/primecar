@@ -3,11 +3,14 @@
 @section('title', 'Painel de Controle')
 
 @section('content_header')
-    <h1>Painel de Controle</h1>
+    <h1>Painel de Controle PrimeCar</h1>
 @stop
 
 @section('content')
-<div class="row min-vh-100 align-items-stretch">
+
+ 
+    <p>Este é o painel de controle da PrimeCar, onde você pode cadastrar e realizar locações de veículos.</p>
+{{-- <div class="row min-vh-100 align-items-stretch">
     <div class="col-md-12">
         <div class="card h-100">
             <div class="card-body d-flex flex-column">
@@ -35,7 +38,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @stop
 
 @push('js')

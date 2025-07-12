@@ -17,7 +17,7 @@
         <div class="card-body">
             <div>
                 <a href="{{ route('locacao.create') }}" type="button" class="btn btn-primary" style="width:80px;">Novo</a>
-                <button id="btn-apagar-todas" class="btn btn-danger ml-2">Apagar todas as locações</button>
+                
             </div>
             <br>
             <table class="table table-bordered table-striped dataTable dtr-inline" id="locacao-table"
@@ -93,25 +93,6 @@
                     }
                 ]
             });
-        });
-    </script>
-
-    <script>
-        $('#btn-apagar-todas').on('click', function() {
-            if(confirm('Tem certeza que deseja apagar TODAS as locações?')) {
-                $.ajax({
-                    url: '{{ route('locacao.apagarTodas') }}',
-                    type: 'DELETE',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        if(response.success) {
-                            location.reload();
-                        }
-                    }
-                });
-            }
         });
     </script>
 @stop

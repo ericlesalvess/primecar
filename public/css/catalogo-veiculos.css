@@ -1,0 +1,84 @@
+.bg-veiculo-detalhe {
+    background-color: #f8f9fa;
+}
+.text-veiculo-nome {
+    color: #f3f3f3;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+.text-veiculo-info {
+    color: #fafafa;
+    font-size: 0.95rem;
+}
+.badge-status-disponivel {
+    background-color: #198754;
+    color: white;
+}
+.badge-status-alugado {
+    background-color: #dc3545;
+    color: white;
+}
+.carousel-veiculo-img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn-veiculo {
+    background-color: #1d3557;
+    color: white;
+    border: none;
+}
+.btn-veiculo:hover {
+    background-color: #0f2238;
+}
+.border-veiculo-img {
+    border: 2px solid #1d3557;
+    border-radius: 50px;
+}
+.modal-header-veiculo {
+    background-color: #1d3557;
+    color: white;
+    border-bottom: 3px solid #457b9d;
+}
+.modal-body-veiculo {
+    padding: 1.5rem;
+}
+.card-img-veiculo {
+    height: 200px;           /* ajuste conforme preferir */
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.card-veiculo { 
+    min-height: 400px;      /* ajuste conforme preferir */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    border: none;
+}
+.card-veiculo .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+.card-veiculo .mt-auto {
+    margin-top: auto;
+}
+.card-catalogo {
+    min-height: 430px;      /* altura mínima igual para todos */
+    max-width: 350px;       /* largura máxima opcional */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-img-catalogo {
+    height: 250px;          /* altura fixa para todas as imagens */
+    object-fit: cover;      /* corta a imagem proporcionalmente */
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}

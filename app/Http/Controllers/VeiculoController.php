@@ -12,7 +12,7 @@ class VeiculoController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Veiculo::latest()->get();
+            $data = Veiculo::all(); // O Eloquent ignora os deletados por padrão quando usa SoftDeletes
 
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
@@ -142,7 +142,7 @@ class VeiculoController extends Controller
     public function destroy(string $id)
     {
         $veiculo = Veiculo::findOrFail($id);
-        $veiculo->delete();
+        $veiculo->delete(); // Agora será soft delete
 
         return view('veiculos.index');
     }
