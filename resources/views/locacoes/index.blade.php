@@ -53,9 +53,9 @@
 
             $('#locacao-table').DataTable({
                  // Desabilita a pesquisa, paginação e informações
-                searching: false,
-                lengthChange: false,
-                paging: false,
+                //searching: false,
+                //lengthChange: false,
+                //paging: false,
                 info: false,
 
                 language: {

@@ -52,6 +52,12 @@ class VeiculoController extends Controller
         $cor = $request->post('cor');
         $tipo_combustivel = $request->post('tipo_combustivel');
         $observacoes = $request->post('observacoes');
+        // Se o campo vier vazio, salva null em vez de uma string vazia ('').
+// O MySQL rejeita '' numa coluna decimal, então sem isso o cadastro
+// de um veículo sem diária daria erro.
+$valor_diaria = $request->post('valor_diaria')
+    ? str_replace(['.', ','], ['', '.'], $request->post('valor_diaria'))
+    : null;
 
         $veiculo = new Veiculo();
 
@@ -65,6 +71,7 @@ class VeiculoController extends Controller
         $veiculo->cor = $cor;
         $veiculo->tipo_combustivel = $tipo_combustivel;
         $veiculo->observacoes = $observacoes;
+        $veiculo->valor_diaria = $valor_diaria;
         $veiculo->origin_user = $user->name;
         $veiculo->last_user = $user->name;
         $veiculo->save();
@@ -107,6 +114,13 @@ class VeiculoController extends Controller
         $cor = $request->post('cor');
         $tipo_combustivel = $request->post('tipo_combustivel');
         $observacoes = $request->post('observacoes');
+        // Se o campo vier vazio, salva null em vez de uma string vazia ('').
+// O MySQL rejeita '' numa coluna decimal, então sem isso o cadastro
+// de um veículo sem diária daria erro.
+$valor_diaria = $request->post('valor_diaria')
+    ? str_replace(['.', ','], ['', '.'], $request->post('valor_diaria'))
+    : null;
+
     
 
         $veiculo = Veiculo::find($id);
@@ -121,7 +135,7 @@ class VeiculoController extends Controller
         $veiculo->cor = $cor;
         $veiculo->tipo_combustivel = $tipo_combustivel;
         $veiculo->observacoes = $observacoes;
-        $veiculo->origin_user = $user->name;
+        $veiculo->valor_diaria = $valor_diaria;
         $veiculo->last_user = $user->name;
         $veiculo->save();
 

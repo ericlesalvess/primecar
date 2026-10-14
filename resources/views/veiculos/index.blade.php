@@ -31,6 +31,7 @@
                         <th style="width: 5%">Ano de Fabricação</th>      
                         <th style="width: 5%">Cor</th>
                         <th style="width: 5%">Combustível</th>
+                        <th style="width: 5%">Valor Diária</th>
                         <th style="width: 5%">Observações</th>
                         <th style="width: 5%">Ações</th>
                     
@@ -115,6 +116,10 @@
                     {
                         data: 'tipo_combustivel',
                         name: 'tipo_combustivel'
+                    },
+                     {
+                        data: 'valor_diaria',
+                        name: 'valor_diaria'
                     },
                     {
                         data: 'observacoes',

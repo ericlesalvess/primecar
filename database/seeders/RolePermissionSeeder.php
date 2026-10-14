@@ -24,6 +24,7 @@ class RolePermissionSeeder extends Seeder
             'acessar locacao',
             'acessar cliente',
             'acessar veiculo',
+            'acessar fluxo-caixa',
         ];
 
         // Criar as permissões com o guard explícito

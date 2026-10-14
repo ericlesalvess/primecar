@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <label for="cliente_id">Cliente</label>
-                        <select class="form-control" id="cliente_id" name="cliente_id" {{ @$edit->id ? 'readonly' : '' }}>
+                        <select class="form-control" id="cliente_id" name="cliente_id" {{ @$edit->id ? 'disabled' : '' }}>
                             <option value="">Selecione</option>
                             @foreach ($clientes as $cliente)
                                 <option value="{{ $cliente->id }}"
@@ -45,12 +45,9 @@
                         @endif
                         <br>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-6">
+                     <div class="col-sm-6">
                         <label for="veiculo_id">Veículo</label>
-                        <select class="form-control" id="veiculo_id" name="veiculo_id" {{ @$edit->id ? 'readonly' : '' }}>
+                        <select class="form-control" id="veiculo_id" name="veiculo_id" {{ @$edit->id ? 'disabled' : '' }}>
                             <option value="">Selecione</option>
 
                             @foreach ($veiculos as $veiculo)
@@ -69,10 +66,12 @@
                     </div>
                 </div>
 
+                
+
                 <div class="row">
                     <div class="col-sm-4">
                         <label for="dias_locacao">Dias Locacão</label>
-                        <input type="text" class="form-control" id="dias_locacao" name="dias_locacao" placeholder="" {{ @$edit->id ? 'readonly' : '' }}
+                        <input type="text" class="form-control" id="dias_locacao" name="dias_locacao" placeholder="" {{ @$edit->id ? 'disabled' : '' }}
                             value="{{ $edit->dias_locacao ?? old('dias_locacao') }}">
                         @if ($errors->has('dias_locacao'))
                             <span style="color: red;">
@@ -104,6 +103,26 @@
                         @endif
                         <br>
                     </div>
+                 @if (isset($edit->id))
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="valor_avaria">Valor Avaria</label>
+            <input type="text" class="form-control" id="valor_avaria" name="valor_avaria" placeholder="0,00"
+                value="{{ old('valor_avaria') }}">
+            @if ($errors->has('valor_avaria'))
+                <span style="color: red;">{{ $errors->first('valor_avaria') }}</span>
+            @endif
+            <br>
+        </div>
+        <div class="col-sm-9">
+            <label for="descricao_avaria">Descrição da Avaria (opcional)</label>
+            <input type="text" class="form-control" id="descricao_avaria" name="descricao_avaria"
+                placeholder="Ex: Amassado na porta traseira"
+                value="{{ old('descricao_avaria') }}">
+            <br>
+        </div>
+    </div>
+@endif
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Registrar</button>
@@ -122,9 +141,12 @@
             <script src="{{ asset('vendor/jquery/jquery.maskedinput.min.js') }}"></script>
             <script src="{{ asset('vendor/jquery/jquery.maskMoney.min.js') }}"></script>
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
             <script>
                 $(document).ready(function() {
+
+
+                $('#valor_avaria').mask('#.##0,00' , {reverse:true});
 
                     // Função para somar dias úteis
                     function adicionarDiasUteis(data, dias) {

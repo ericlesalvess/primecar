@@ -299,80 +299,74 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'Pesquisar',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-     
-        
+    // Navbar items:
+    [
+        'type' => 'navbar-search',
+        'text' => 'Pesquisar',
+        'topnav_right' => true,
+    ],
+    [
+        'type' => 'fullscreen-widget',
+        'topnav_right' => true,
+    ],
 
-      //  [
-       
-       // ],
-      
-        
-
-
-
-        // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        // [
-        //     'text' => 'pages',
-        //     'url' => 'admin/pages',
-        //     'icon' => 'far fa-fw fa-file',
-        //     'label' => 4,
-        //     'label_color' => 'success',
-        // ],
-        // ['header' => 'account_settings'],
-        [
-            'text' => 'Catálogo',
-            'url' => '/catalogo',
-            'icon' => 'fas fa-book-open',
-            'can' => 'acessar catalogo',
-        ],
-        [
-            'text' => 'Locação',
-            'url' => '/locacao',
-            'icon' => 'fas fa-car-side',
-            'can' => 'acessar locacao',
-        ],
-        [
-            'text' => 'Cadastro',
-            'url' => '#',
-            'icon' => 'fas fa-id-card',
-            'submenu' => [
-                [
-                    'text' => 'Clientes',
-                    'url' => '/cliente',
-                    'icon' => 'fas fa-fw fa-users',
-                    'can' => 'acessar cliente',
-                ],
-                [
-                    'text' => 'Veículos',
-                    'url' => '/veiculo',
-                    'icon' => 'fas fa-fw fa-car',
-                    'can' => 'acessar veiculo',
-                ],
-                
+    // Sidebar items:
+    [
+        'text' => 'blog',
+        'url' => 'admin/blog',
+        'can' => 'manage-blog',
+    ],
+    [
+        'text' => 'Catálogo',
+        'url' => '/catalogo',
+        'icon' => 'fas fa-book-open',
+        'can' => 'acessar catalogo',
+    ],
+    [
+        'text' => 'Locação',
+        'url' => '/locacao',
+        'icon' => 'fas fa-car-side',
+        'can' => 'acessar locacao',
+    ],
+    [
+        'text' => 'Cadastro',
+        'url' => '#',
+        'icon' => 'fas fa-id-card',
+        'submenu' => [
+            [
+                'text' => 'Clientes',
+                'url' => '/cliente',
+                'icon' => 'fas fa-fw fa-users',
+                'can' => 'acessar cliente',
+            ],
+            [
+                'text' => 'Veículos',
+                'url' => '/veiculo',
+                'icon' => 'fas fa-fw fa-car',
+                'can' => 'acessar veiculo',
             ],
         ],
-        
-        
     ],
+    [
+        'text' => 'Fluxo de Caixa',
+        'url' => '#',
+        'icon' => 'fas fa-dollar-sign',
+        'submenu' => [
+            [
+                'text' => 'Lançamentos',
+                'url' => '/fluxo-caixa',
+                'icon' => 'fas fa-fw fa-list',
+                'can' => 'acessar fluxo-caixa',
+            ],
+            [
+                'text' => 'Relatórios',
+                'url' => '/fluxo-caixa/relatorios',
+                'icon' => 'fas fa-fw fa-chart-line',
+                'can' => 'acessar fluxo-caixa',
+            ],
+        ],
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
